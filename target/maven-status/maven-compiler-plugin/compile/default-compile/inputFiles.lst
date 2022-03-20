@@ -1,0 +1,17 @@
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\utils\Constants.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\model\Auditoria.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\service\impl\CRUDImpl.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\controller\TipoCambioController.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\controller\UserController.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\model\TipoCambio.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\RouterConfig.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\SpringReactorApplication.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\model\TipoCambioRequest.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\service\ICRUD.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\repo\ITipoCambioRepo.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\service\ITipoCambioService.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\domain\User.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\repo\IGenericRepo.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\security\JWTAuthorizationFilter.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\service\impl\TipoCambioServiceImpl.java
+C:\Users\CANVIA\Documents\workspace-spring-tool-suite-4-4.13.1.RELEASE\spring-reactor\src\main\java\com\bcp\handler\PlatoHandler.java
