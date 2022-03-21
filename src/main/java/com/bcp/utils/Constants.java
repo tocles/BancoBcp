@@ -15,5 +15,9 @@ public class Constants {
 	public static final String HEADER_AUTHORIZATION_KEY = "Authorization";
 
 	public static final String TOKEN_BEARER_PREFIX = "Bearer";
+	
+	public static final String MONEDA_EUR = "EUR";
+	public static final String MONEDA_PEN = "PEN";
+	public static final String MONEDA_USD = "USD";
 
 }

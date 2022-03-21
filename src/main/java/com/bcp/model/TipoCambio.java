@@ -1,137 +1,74 @@
 package com.bcp.model;
 
-import java.time.LocalDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-@Table("tipocambio")
+@Entity
+@Table(name="tipo_cambio")
 public class TipoCambio {
-	
+
 	@Id
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	@Column("monto")
-	private Double monto;
-
-	@Column("montocontipocambio")
-	private Double montocontipocambio;
-
-	@Column("monedaorigen")
-	private String monedaorigen;
-
-	@Column("monedadestino")
-	private String monedadestino;
-
-	@Column("tipocambio")
-	private Double tipocambio;
+	@Column(name = "moneda_origen")
+	private String monedaOrigen;
 	
-	@Column("codUsuRegis")
-	private String codUsuRegis;
-	
-	@Column("fecRegis")
-	//@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDate fecRegis;
-	
-	@JsonIgnore
-	@Column("codUsuModif")
-    private String codUsuModif;
-	
-	@JsonIgnore
-	@Column("fecModif")
-	//@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDate fecModif;
-	
-	
+	@Column(name = "moneda_destino")
+	private String monedaDestino;
 
+	@Column(name = "tipo_cambio")
+	private Double tipoCambio;
 
-	public Integer getId() {
+	@Column(name = "fec_regi")
+	private Date fecregis;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public Double getMonto() {
-		return monto;
+	public String getMonedaOrigen() {
+		return monedaOrigen;
 	}
 
-	public void setMonto(Double monto) {
-		this.monto = monto;
+	public void setMonedaOrigen(String monedaOrigen) {
+		this.monedaOrigen = monedaOrigen;
 	}
 
-	public Double getMontocontipocambio() {
-		return montocontipocambio;
+	public String getMonedaDestino() {
+		return monedaDestino;
 	}
 
-	public void setMontocontipocambio(Double montocontipocambio) {
-		this.montocontipocambio = montocontipocambio;
+	public void setMonedaDestino(String monedaDestino) {
+		this.monedaDestino = monedaDestino;
 	}
 
-	public Double getTipocambio() {
-		return tipocambio;
+	public Double getTipoCambio() {
+		return tipoCambio;
 	}
 
-	public void setTipocambio(Double tipocambio) {
-		this.tipocambio = tipocambio;
+	public void setTipoCambio(Double tipoCambio) {
+		this.tipoCambio = tipoCambio;
 	}
 
-	public String getMonedaorigen() {
-		return monedaorigen;
+	public Date getFecregis() {
+		return fecregis;
 	}
 
-	public void setMonedaorigen(String monedaorigen) {
-		this.monedaorigen = monedaorigen;
+	public void setFecregis(Date fecregis) {
+		this.fecregis = fecregis;
 	}
-
-	public String getMonedadestino() {
-		return monedadestino;
-	}
-
-	public void setMonedadestino(String monedadestino) {
-		this.monedadestino = monedadestino;
-	}
-
-	public String getCodUsuRegis() {
-		return codUsuRegis;
-	}
-
-	public void setCodUsuRegis(String codUsuRegis) {
-		this.codUsuRegis = codUsuRegis;
-	}
-
-
-
-	public String getCodUsuModif() {
-		return codUsuModif;
-	}
-
-	public void setCodUsuModif(String codUsuModif) {
-		this.codUsuModif = codUsuModif;
-	}
-
-	public LocalDate getFecRegis() {
-		return fecRegis;
-	}
-
-	public void setFecRegis(LocalDate fecRegis) {
-		this.fecRegis = fecRegis;
-	}
-
-	public LocalDate getFecModif() {
-		return fecModif;
-	}
-
-	public void setFecModif(LocalDate fecModif) {
-		this.fecModif = fecModif;
-	}
-
-
 
 
 

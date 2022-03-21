@@ -1,4 +1,4 @@
-package com.bcp.service;
+/*package com.bcp.service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -10,4 +10,4 @@ public interface ICRUD<T, ID> {
 	Flux<T> listar();
 	Mono<T> listarPorId(ID id);
 	Mono<Void> eliminar(ID id);
-}
+}*/

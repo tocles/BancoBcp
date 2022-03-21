@@ -2,6 +2,7 @@ package com.bcp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +13,7 @@ import com.bcp.security.JWTAuthorizationFilter;
 
 
 @SpringBootApplication
+@ComponentScan({ "com.bcp.*" })
 public class SpringReactorApplication {
 
 	public static void main(String[] args) {

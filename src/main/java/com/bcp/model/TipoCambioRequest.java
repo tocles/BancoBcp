@@ -1,21 +1,23 @@
 package com.bcp.model;
 
-import org.springframework.data.annotation.Id;
+import javax.validation.constraints.NotNull;
 
 public class TipoCambioRequest {
 	
-	@Id
-	private Integer id;
-	private Double monto;
-	private String monedaOrigen;
-	private String monedaDestino;
-	private Double tipoCambio;
+	@NotNull(message = "El campo 'monedaOrigen' no puede ser nulo")
+    private String monedaOrigen;
 	
-	public Double getMonto() {
-		return monto;
+	@NotNull(message = "El campo 'monedaDestino' no puede ser nulo")
+    private String monedaDestino;
+	
+	@NotNull(message = "El campo 'tipoCambio' no puede ser nulo")
+    private Double tipoCambio;
+    
+	public Double getTipoCambio() {
+		return tipoCambio;
 	}
-	public void setMonto(Double monto) {
-		this.monto = monto;
+	public void setTipoCambio(Double tipoCambio) {
+		this.tipoCambio = tipoCambio;
 	}
 	public String getMonedaOrigen() {
 		return monedaOrigen;
@@ -29,23 +31,6 @@ public class TipoCambioRequest {
 	public void setMonedaDestino(String monedaDestino) {
 		this.monedaDestino = monedaDestino;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public Double getTipoCambio() {
-		return tipoCambio;
-	}
-	public void setTipoCambio(Double tipoCambio) {
-		this.tipoCambio = tipoCambio;
-	}
-
-	
-	
 	
 
-
-	
 }

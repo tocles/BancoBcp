@@ -1,5 +1,5 @@
 package com.bcp.service.impl;
-
+/*
 import com.bcp.repo.IGenericRepo;
 import com.bcp.service.ICRUD;
 
@@ -35,4 +35,4 @@ public abstract class CRUDImpl<T, ID> implements ICRUD<T, ID>{
 		return getRepo().deleteById(id);
 	}
 	
-}
+}*/

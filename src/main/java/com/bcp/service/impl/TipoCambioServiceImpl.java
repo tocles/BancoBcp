@@ -1,90 +1,82 @@
 package com.bcp.service.impl;
 
-import java.time.LocalDate;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bcp.mapper.TipoCambioMapper;
 import com.bcp.model.TipoCambio;
 import com.bcp.model.TipoCambioRequest;
-import com.bcp.repo.IGenericRepo;
+import com.bcp.model.TipoCambioResponse;
 import com.bcp.repo.ITipoCambioRepo;
 import com.bcp.service.ITipoCambioService;
+import com.bcp.utils.NotFoundException;
 
-import reactor.core.publisher.Mono;
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
 
 
 @Service
-public class TipoCambioServiceImpl extends CRUDImpl<TipoCambio, Integer> implements ITipoCambioService {
-	
+public class TipoCambioServiceImpl implements ITipoCambioService {
+
 	@Autowired
 	private ITipoCambioRepo iTipoCambioRepo;
-	
+
+
 	@Override
-	protected IGenericRepo<TipoCambio, Integer> getRepo() {		
-		return iTipoCambioRepo; 
-	}
-	
-	
-	@Override
-	public Mono<TipoCambio> registrar(TipoCambioRequest p) {
-		TipoCambio tipoCambio= new TipoCambio();
-		double tipCambio = 0.00;
-		double monto=0.00;
-		if (p.getMonedaOrigen().equals("PEN") && p.getMonedaDestino().equals("USD"))
-		{
+	public Single<TipoCambioResponse> obtenerTipoCambio(Double monto, String monedaOrigen, String monedaDestino) {
 
-			tipCambio = 0.26;
-
-			monto = p.getMonto()*tipCambio;
-
-		}
-		if(p.getMonedaOrigen().equals("PEN") && p.getMonedaDestino().equals("EUR"))
-		{
-			tipCambio = 0.24;
-			monto = p.getMonto()*tipCambio;
-
-		}
-
-		if (p.getMonedaOrigen().equals("USD") && p.getMonedaDestino().equals("PEN"))
-		{
-
-			tipCambio = 3.78;
-			monto = p.getMonto()*tipCambio;
-		}
-
-		if (p.getMonedaOrigen().equals("USD") && p.getMonedaDestino().equals("EUR"))
-		{
-
-			tipCambio = 0.90;
-			monto = p.getMonto()*tipCambio;
-		}
-
-		if (p.getMonedaOrigen().equals("EUR") && p.getMonedaDestino().equals("PEN"))
-		{
-			tipCambio = 4.19;
-			monto = p.getMonto()*tipCambio;
-
-		}
-
-
-		if (p.getMonedaOrigen().equals("EUR") && p.getMonedaDestino().equals("USD"))
-		{
-			tipCambio = 1.11;
-			monto = p.getMonto()*tipCambio;
-
-		}
-		tipoCambio.setId(p.getId());
-		tipoCambio.setMonto(p.getMonto());
-		tipoCambio.setMontocontipocambio(monto);
-		tipoCambio.setMonedaorigen(p.getMonedaOrigen());
-		tipoCambio.setMonedadestino(p.getMonedaDestino());
-		tipoCambio.setTipocambio(tipCambio);
+		/*return buscarPorMoneda(monedaDestino)
+				.map(p -> {
+					if (p.isPresent()) {
+						//Prueba return Single.just(new TipoCambioResponse(""));
+						return TipoCambioMapper.contruirTipoCambioResponse(monto, monedaOrigen, monedaDestino, p.get());
+					}
+					throw new NotFoundException("El tipo de cambio enviado no existe!!!");
+				});*/
 		
-		tipoCambio.setCodUsuRegis("usr_banco");
-		tipoCambio.setFecRegis(LocalDate.now());
-		return iTipoCambioRepo.save(tipoCambio);
+		return  Single.fromCallable(() -> TipoCambioMapper.contruirTipoCambioResponse(monto, monedaOrigen, monedaDestino));
 	}
 
+
+	@Override
+	public Completable guardarTipoCambio(TipoCambioRequest tipoCambioRequest) {
+
+		return Completable.fromCallable(() -> iTipoCambioRepo.save(TipoCambioMapper.mapMonedaTipoCambio(tipoCambioRequest)));
+
+	}
+
+	@Override
+	public Completable actualizarTipoCambio(TipoCambioRequest tipoCambioRequest, String id) {
+
+		return buscarPorId(id)
+				.flatMapCompletable(p -> {
+
+					if (p.isPresent()) {
+						TipoCambio tipoCambio = p.get();
+						tipoCambio.setTipoCambio(tipoCambioRequest.getTipoCambio());
+
+						return Completable.fromCallable(() -> iTipoCambioRepo.save(tipoCambio));
+					} else {
+						return Completable.error(new NotFoundException("No existe el tipo de moneda a actualizar"));
+					}
+
+				});
+	}
+
+	private Single<Optional<TipoCambio>> buscarPorId(String id) {
+		return Single.fromCallable(() -> iTipoCambioRepo.findById(Long.parseLong(id)));
+	}
+
+	@Override
+	public Single<Optional<TipoCambio>> busquedaTipoCambio(String id) {
+		return buscarPorId(id);
+
+	}
+
+	/*private Single<Optional<TipoCambio>> buscarPorMoneda(String moneda) {
+		return Single.fromCallable(() -> iTipoCambioRepo.buscarPorMoneda(moneda));
+	}*/
 
 }
